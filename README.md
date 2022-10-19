@@ -13,7 +13,7 @@ Speaker_01 start speaking at 22.3s with total speech length of 10.7s
 
 ## Methods
 ### Experiment Setting
-The model is based on research and code from [pyannote](https://pyannote.github.io/). The progress that did the best at improving model's performance was to fine-tune the pretrained model with Thai diarization dataset which I synthesize from public speech dataset. Also, the hyperparameter tuning were performed.
+The model is based on research and code from [pyannote](https://pyannote.github.io/). The progress that did the best at improving model's performance was to fine-tune the pretrained model with Thai diarization dataset which I synthesize from public speech dataset along with the scraped data. Also, the hyperparameter tuning were performed.
 
 ## Results
 Improve the Diarization error rate by 4x compared to the pretrained model of pyannote (From ~20% to ~5%)
