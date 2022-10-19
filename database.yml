@@ -1,0 +1,67 @@
+# https://github.com/pyannote/pyannote-database#speaker-diarization
+# https://github.com/pyannote/pyannote-database#meta-protocols
+
+Databases:
+  Base: 
+    - wav.ami/{uri}.wav
+    - wav.cv02/{uri}.wav
+
+Protocols:
+  Base:
+    SpeakerDiarization:
+      mini:
+        train:
+          uri: uri/mini/mini.ami.txt
+          annotation: rttm/ami/train/{uri}.rttm
+          annotated: uem/ami/train/{uri}.uem
+      ami:
+        train:
+          uri: uri/ami/train.ami.txt
+          annotation: rttm/ami/train/{uri}.rttm
+          annotated: uem/ami/train/{uri}.uem
+        development:
+          uri: uri/ami/dev.ami.txt
+          annotation: rttm/ami/dev/{uri}.rttm
+          annotated: uem/ami/dev/{uri}.uem
+        test:
+          uri: uri/ami/test.ami.txt
+          annotation: rttm/ami/test/{uri}.rttm
+          annotated: uem/ami/test/{uri}.uem
+      amiF07:
+        train:
+          uri: uri/ami/train.ami.txt
+          annotation: rttm/amiF07/train/{uri}.rttm
+          annotated: uem/ami/train/{uri}.uem
+        development:
+          uri: uri/ami/dev.ami.txt
+          annotation: rttm/amiF07/dev/{uri}.rttm
+          annotated: uem/ami/dev/{uri}.uem
+        test:
+          uri: uri/ami/test.ami.txt
+          annotation: rttm/amiF07/test/{uri}.rttm
+          annotated: uem/ami/test/{uri}.uem
+      cv02:
+        train:
+          uri: uri/cv02/train.cv02.txt
+          annotation: rttm/cv02/train/{uri}.rttm
+          annotated: uem/cv02/train/{uri}.uem
+        development:
+          uri: uri/cv02/dev.cv02.txt
+          annotation: rttm/cv02/dev/{uri}.rttm
+          annotated: uem/cv02/dev/{uri}.uem
+        test:
+          uri: uri/cv02/dev.cv02.txt
+          annotation: rttm/cv02/dev/{uri}.rttm
+          annotated: uem/cv02/dev/{uri}.uem
+  X: # Meta-protocols
+    SpeakerDiarization:
+      cv02_amiF07:
+        train:
+          Base.SpeakerDiarization.amiF07: [train]
+          Base.SpeakerDiarization.cv02: [train]
+        development:
+          Base.SpeakerDiarization.amiF07: [development]
+          Base.SpeakerDiarization.cv02: [development]
+        test:
+          Base.SpeakerDiarization.amiF07: [test]
+          Base.SpeakerDiarization.cv02: [test]
