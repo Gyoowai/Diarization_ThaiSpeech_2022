@@ -1,19 +1,19 @@
 ﻿# Speaker Diarization for Thai Speech
 
 ## What is Speaker Diarization?
-Speaker diarization คือ กระบวนการประมวลผลข้อมูลเสียงที่มีผู้พูดหลายคน เพื่อแยกแยะว่าในข้อมูลเสียงนั้นมีผู้พูดกี่คน และแต่ละคนได้พูดในช่วงเวลาไหน เป็นระยะเวลาเท่าใด
-ตัวอย่าง	ผลลัพธ์ที่ได้จากกระบวนการ speaker diarization ในกรณีที่มีผู้พูดจำนวน 3 คน
+Speaker diarization is the speech processing tasks which takes the input of speech with different speakers then identify which speaker is speaking and how long the speech occurs (The question of "who spoke when?").
 
+The example below show the results of speaker diarization in the case of 3 speakers
 ```
-Speaker_00 เริ่มพูด ณ เวลา 10.9s ใช้เวลาพูดรวม 5.2s
-Speaker_02 เริ่มพูด ณ เวลา 17.9s ใช้เวลาพูดรวม 1.4s
-Speaker_02 เริ่มพูด ณ เวลา 18.9s ใช้เวลาพูดรวม 2.4s
-Speaker_01 เริ่มพูด ณ เวลา 22.3s ใช้เวลาพูดรวม 10.7s
+Speaker_00 start speaking at 10.9s with total speech length of 5.2s
+Speaker_02 start speaking at 17.9s with total speech length of 1.4s
+Speaker_02 start speaking at 18.9s with total speech length of 2.4s
+Speaker_01 start speaking at 22.3s with total speech length of 10.7s
 ```
 
 ## Methods
 ### Experiment Setting
-นำโมเดลจาก [pyannote](https://pyannote.github.io/) มาทำการ Fine-tuning หรือเทรนเพิ่มเติมด้วย Dataset ของข้อมูลการประชุมที่ได้เตรียมไว้เพื่อเพิ่มขอบเขตความรู้ของโมเดลให้รู้จักข้อมูลที่มีลักษณะเป็นการประชุมและข้อมูลภาษาไทย จากนั้นนำโมเดลที่ได้มาปรับปรุงค่า Hyperparameters เพื่อให้เหมาะสมกับลักษณะของอินพุตที่กำหนดไว้
+The model is based on research and code from [pyannote](https://pyannote.github.io/). The progress that did the best at improving model's performance was to fine-tune the pretrained model with Thai diarization dataset which I synthesize from public speech dataset. Also, the hyperparameter tuning were performed.
 
 ## Results
 Improve the Diarization error rate by 4x compared to the pretrained model of pyannote (From ~20% to ~5%)
@@ -24,10 +24,13 @@ This visualization represents each speakers in different colors and the line as 
 The test data are from Parliament meeting: [Youtube link](https://www.youtube.com/watch?v=xQKT66VMZeQ&t=4539s)
 
 Ground truth:
+![groundtruth_demo_result](https://github.com/Gyoowai/2022_Diarization_forThai/blob/master/pictures/groundtruth_demo_result.png)
 
 Pretrain Result (DER = 19.19):
-  
+![pretrain_demo_result](https://github.com/Gyoowai/2022_Diarization_forThai/blob/master/pictures/pretrain_demo_result.png)
+
 My Result (DER = 3.9):
+![demo_result](https://github.com/Gyoowai/2022_Diarization_forThai/blob/master/pictures/demo_result.png)
 
 ## What does output look like?
 rttm files format
@@ -55,4 +58,3 @@ Downloads: https://commonvoice.mozilla.org/th/datasets
 Description: https://www.kaggle.com/datasets/mozillaorg/common-voice
 ### Clips from Parliament Meeting
 Scraping from youtube clips
-  
